@@ -1,0 +1,11 @@
+Step 1: Add jar dependencies to pom.xml
+
+Step 2: Create Entity class
+
+Step 3: Create DAO layer
+
+Step 4: Create Service layer
+
+Step 5: Create db.properties file
+
+Step 6: Create Configs class file
