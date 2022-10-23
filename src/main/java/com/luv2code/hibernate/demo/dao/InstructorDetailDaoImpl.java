@@ -17,4 +17,9 @@ public class InstructorDetailDaoImpl implements InstructorDetailDao {
 		sessionFactory.getCurrentSession().save(instructorDetail);
 	}
 
+	@Override
+	public InstructorDetail getInstructorDetail(int instructorDetailId) {
+		return sessionFactory.getCurrentSession().get(InstructorDetail.class, instructorDetailId);
+	}
+
 }

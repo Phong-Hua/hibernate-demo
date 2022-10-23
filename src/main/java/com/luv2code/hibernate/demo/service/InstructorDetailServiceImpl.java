@@ -19,4 +19,10 @@ public class InstructorDetailServiceImpl implements InstructorDetailService {
 		instructorDetailDao.saveInstructorDetail(instructorDetail);
 	}
 
+	@Override
+	@Transactional
+	public InstructorDetail getInstructorDetail(int instructorDetailId) {
+		return instructorDetailDao.getInstructorDetail(instructorDetailId);
+	}
+
 }
