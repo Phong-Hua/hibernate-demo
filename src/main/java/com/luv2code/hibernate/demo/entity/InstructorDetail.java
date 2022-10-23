@@ -1,10 +1,12 @@
 package com.luv2code.hibernate.demo.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,22 +17,30 @@ public class InstructorDetail {
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@Column(name = "youtube_channel")
 	private String youtubeChannel;
-	
+
 	@Column(name = "hobby")
 	private String hobby;
-	
+
+	@OneToOne(
+			cascade = { CascadeType.DETACH, CascadeType.MERGE, 
+					CascadeType.PERSIST,CascadeType.REFRESH }, 
+			mappedBy = "instructorDetail" // this refer to the "instructorDetail" in "Instructor"
+										// class, tell HB that this instructor field is
+										// mapped by "instructorDetail" property in the
+										// "Instructor" class
+	)
+	private Instructor instructor;
+
 	public InstructorDetail() {
 	}
 
-	
 	public InstructorDetail(String youtubeChannel, String hobby) {
 		this.youtubeChannel = youtubeChannel;
 		this.hobby = hobby;
 	}
-
 
 	public int getId() {
 		return id;
@@ -54,6 +64,14 @@ public class InstructorDetail {
 
 	public void setHobby(String hobby) {
 		this.hobby = hobby;
+	}
+
+	public Instructor getInstructor() {
+		return instructor;
+	}
+
+	public void setInstructor(Instructor instructor) {
+		this.instructor = instructor;
 	}
 
 	@Override
